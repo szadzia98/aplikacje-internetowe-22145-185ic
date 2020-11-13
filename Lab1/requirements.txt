@@ -13,4 +13,4 @@ sqlparse==0.4.1
 toml==0.10.2
 whitenoise==5.2.0
 wrapt==1.12.1
-psycopg2==2.7.2
+psycopg2==2.7.5
