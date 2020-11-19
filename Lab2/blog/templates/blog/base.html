@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog 22145</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog-css.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <li {%if section == "dashboard" %} class="selected"{% endif %}>
+                <a href="{% url 'dashboard' %}">Panel główny</a>
+            </li>
+            {% endif %}
+            <h1><a href ="/">Blog</a></h1>
+            <h2><a>Alicja Szada<br>22145<br>185IC_B2</a></h2>
+            <span class="user">
+                {% if request.user.is_authenticated %}
+                Witaj, {{ request.user.first_name }}!
+                <a href="{% url 'logout' %}">Wyloguj</a>
+                {% else %}
+                <a href="{% url 'login' %}">Zaloguj</a>
+                {% endif %}
+            </span>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
