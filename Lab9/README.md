@@ -3,10 +3,10 @@
 
 ### Widok aplikacji
 Zakładka "Tutorials"  
-![](Screen\1.jpg)  
+![](Screen/1.jpg)  
 Zakładka "Add"  
-![](Screen\2.jpg)  
-![](Screen\3.jpg)  
-![](Screen\4.jpg)  
+![](Screen/2.jpg)  
+![](Screen/3.jpg)  
+![](Screen/4.jpg)  
 Edycja  
-![](Screen\5.jpg)  
+![](Screen/5.jpg)  
