@@ -1,0 +1,56 @@
+<html>
+<body>
+
+<p>Ciag Fibonacciego: <output id="resultFib"></output></p>
+<button onclick="startFib()">Start Fibonacci</button> 
+<button onclick="stopFib()">Stop Fibonacci</button>
+<p>Potegi kwadratowe kolejnych liczb: <output id="resultPow"></output></p>
+<button onclick="startPow()">Start potegowanie</button> 
+<button onclick="stopPow()">Stop potegowanie</button>
+<script>
+var wFib;
+var wPow;
+
+function startFib() {
+  const tab1 = [];
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(wFib) == "undefined") {
+      wFib = new Worker("webworker1.js");
+    }
+    wFib.onmessage = function(event) {
+        tab1.push(event.data)
+      document.getElementById("resultFib").innerHTML = tab1;
+    };
+  } else {
+    document.getElementById("resultFib").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopFib() { 
+  wFib.terminate();
+  wFib = undefined;
+}
+
+function startPow() {
+  const tab2 = [];
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(wPow) == "undefined") {
+      wPow = new Worker("webworker2.js");
+    }
+    wPow.onmessage = function(event) {
+        tab2.push(event.data)
+      document.getElementById("resultPow").innerHTML = tab2;
+    };
+  } else {
+    document.getElementById("resultPow").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopPow() { 
+  wPow.terminate();
+  wPow = undefined;
+}
+
+</script>
+</body>
+</html>
